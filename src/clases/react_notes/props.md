@@ -1,39 +1,9 @@
-1) Realiza un ejercicio de props donde se refleje el uso de:
 
-2: Prop con Número (Number)
-3: Prop con Booleano (true/false)
-4: Prop con Arrays (Listas de Valores)
-5: Prop con Objetos (Múltiples Valores en una sola Prop)
-6: Prop con Funciones (Callbacks para Eventos)
----------------------------------
-2) 
-1️⃣ Prop con Valor por Defecto (defaultProps o valores por defecto en ES6)
-2️⃣ Variantes con Diferentes Estilos 
-3️⃣ Variantes con spread operator (...props)
-4️⃣ Variantes con Booleanos (Activar/Desactivar Funcionalidad)Activar o desactivar estilos o comportamientos sin pasar valores explícitos.
-5️⃣ Variantes con children (Pasar JSX dentro del Componente)
-6️⃣ Variantes con Condicionales (Props Condicionales)
-----------------------------------------------------------
-3)
-1️⃣ Atajo con Props Booleanas (Sin Necesidad de ={true})
-📌 ¿Para qué sirve?
-Si una prop booleana es true, no es necesario escribir ={true}.
-2️⃣ Trampilla con && (Render Condicional Corto)
-📌 ¿Para qué sirve?
-Renderizar algo solo si una condición es true, sin usar if.
-3️⃣ Atajo con Destructuración Directa
-📌 ¿Para qué sirve?
-Extraer props directamente en los parámetros de la función.
-4️⃣ Trampilla con ?? (Valor por Defecto Solo si es null o undefined)
-📌 ¿Para qué sirve?
+
+
+
 Si una prop no se pasa o es null/undefined, darle un valor por defecto.
-5️⃣ Trampilla con ...rest (Props Dinámicas sin Declarar una por una)
-📌 ¿Para qué sirve?
-Permite pasar cualquier prop sin definirlas todas en el componente.
-6️⃣ Trampilla con Componentes Anónimos y children
-📌 ¿Para qué sirve?
-Evita escribir nombres innecesarios en componentes simples.
-7️⃣ Trampilla con as (Reutilización de Componentes con Etiquetas Diferentes)
+
 
 
 

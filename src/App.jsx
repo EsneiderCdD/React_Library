@@ -1,17 +1,13 @@
-import './App.css'
-import PropconNumero from './clases/react_notes/props/PropconNumero.jsx'
-
+import StatusIcon from "./clases/react_notes/props/PropCondional";
 
 function App() {
-
-
   return (
-    <>
-
-    <PropconNumero number={10} />
-
-    </>
-  )
+    <div>
+      <h1>Ejemplo de Props Condicionales</h1>
+      <StatusIcon status="online" />
+      <StatusIcon status="offline" />
+    </div>
+  );
 }
 
-export default App
+export default App;
