@@ -1,4 +1,25 @@
+import React from 'react';
 
+function ProductCard({ name, price, category, onSelect, children, ...rest }) {
+  return (
+    <div {...rest} style={{ border: '1px solid gray', padding: '1rem', borderRadius: '6px', marginBottom: '1rem' }}>
+      <h3>{name}</h3>
+      <p>Precio: ${price}</p>
+      <p>Categoría: {category}</p>
+
+      <button onClick={() => onSelect(name)}>Seleccionar</button>
+
+      <div style={{ marginTop: '0.5rem' }}>
+        {children}
+      </div>
+    </div>
+  );
+}
+
+export default ProductCard;
+
+{/*
+    
 import React from 'react';
 import PortalModule from './clases/react_notes/props/ejercicios/PortalBuilder';
 
@@ -25,4 +46,4 @@ function PortalBuilder() {
   );
 }
 
-export default PortalBuilder;
+export default PortalBuilder; */}
