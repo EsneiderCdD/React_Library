@@ -41,31 +41,31 @@ export default BossCard;
 
 {/* 
     import React from 'react';
-    import BossCard from './clases/react_notes/props/ejercicios/Ejercicio5';    
-    
-    function App() {
-      const bossStats = { strength: 95, speed: 70, endurance: 88 };
-      const bossAbilities = ['Fuego eterno', 'Invocación oscura', 'Grito del abismo'];
-      const bossAllies = [
-        { name: 'Gárgola de Hueso', type: 'Invocación' },
-        { name: 'Sombras Errantes', type: 'Espíritu' },
-      ];
-    
-      return (
-        <BossCard
-          name="Azkron el Devoraluz"
-          level={99}
-          isAwakened={true}
-          stats={bossStats}
-          abilities={bossAbilities}
-          allies={bossAllies}
-          id="boss-final"
-          className="boss-wrapper"
-        >
-          <p><strong>¡Advertencia!</strong> Este jefe final consume almas para fortalecerse.</p>
-        </BossCard>
-      );
-    }
-    
-    export default App;
+        import BossCard from './clases/react_notes/props/ejercicios/BossCard';    
+        
+        function App() {
+          const bossStats = { strength: 95, speed: 70, endurance: 88 };
+          const bossAbilities = ['Fuego eterno', 'Invocación oscura', 'Grito del abismo'];
+          const bossAllies = [
+            { name: 'Gárgola de Hueso', type: 'Invocación' },
+            { name: 'Sombras Errantes', type: 'Espíritu' },
+          ];
+        
+          return (
+            <BossCard
+              name="Azkron el Devoraluz"
+              level={99}
+              isAwakened={true}
+              stats={bossStats}
+              abilities={bossAbilities}
+              allies={bossAllies}
+              id="boss-final"
+              className="boss-wrapper"
+            >
+              <p><strong>¡Advertencia!</strong> Este jefe final consume almas para fortalecerse.</p>
+            </BossCard>
+          );
+        }
+        
+        export default App;
      */}
