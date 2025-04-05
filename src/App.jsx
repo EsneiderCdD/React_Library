@@ -1,11 +1,13 @@
+import FormularioDinamico from "./clases/react_notes/estadosyeventos/FormularioDinamico";
 
-import EventosEnFormularios from "./clases/react_notes/eventos/EventosEnFormularios";
+FormularioDinamico
+
 
 function App() {
   return (
     <div>
-      <EventosEnFormularios />
-      
+    
+      <FormularioDinamico />
     </div>
   );
 }
