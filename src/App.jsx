@@ -1,10 +1,10 @@
 
-import PrevenirEventos from "./clases/react_notes/eventos/PrevenirEventos";
+import EventosEnFormularios from "./clases/react_notes/eventos/EventosEnFormularios";
 
 function App() {
   return (
     <div>
-      <PrevenirEventos />
+      <EventosEnFormularios />
       
     </div>
   );
