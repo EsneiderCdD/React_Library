@@ -1,11 +1,11 @@
 
-import EstadoConObjetos from "./clases/react_notes/estado/EstadoConObjetos";
+import EventoConParametros from "./clases/react_notes/eventos/EventoConParametros";
 
 function App() {
   return (
     <div>
+      <EventoConParametros />
       
-      <EstadoConObjetos />
     </div>
   );
 }
