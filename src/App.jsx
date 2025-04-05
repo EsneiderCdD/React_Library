@@ -1,13 +1,11 @@
-import FormularioDinamico from "./clases/react_notes/estadosyeventos/FormularioDinamico";
-
-FormularioDinamico
-
+import ListaTareasCheck from "./clases/react_notes/renderizadocondional/RenderCombinado/ListaTareasCheck";
 
 function App() {
   return (
     <div>
-    
-      <FormularioDinamico />
+
+      <ListaTareasCheck />   
+
     </div>
   );
 }
