@@ -1,10 +1,10 @@
 
-import EventoConParametros from "./clases/react_notes/eventos/EventoConParametros";
+import PrevenirEventos from "./clases/react_notes/eventos/PrevenirEventos";
 
 function App() {
   return (
     <div>
-      <EventoConParametros />
+      <PrevenirEventos />
       
     </div>
   );
