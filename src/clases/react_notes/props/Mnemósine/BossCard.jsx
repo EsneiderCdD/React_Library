@@ -14,6 +14,7 @@ function BossCard({ name, level, isAwakened, stats, abilities, allies, children,
         <li>Velocidad: {stats.speed}</li>
         <li>Resistencia: {stats.endurance}</li>
       </ul>
+      
 
       <h3>Habilidades:</h3>
       <ul>
