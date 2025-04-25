@@ -1,67 +1,24 @@
-
-import {useState} from 'react';
-
-function Estados () {
-
-    const cajas = {
-        azul: {background : "#add8e6", height: "200px", width: "200px"},
-        azulOscuro: {background :"#001f3f", height: "200px", width: "200px"},
-    }
-
-    const [mensaje, setMensaje] = useState("");
-    const [mensajeGuardado, setMensajeGuardado] = useState("");
-
-    const [modoOscuro, setModoOscuro] = useState(false);
-
-
-    const validarMensaje = () => {
-        return mensaje.trim() !== ""
-    };
-
+{/*
+    If: Estructura de control, no se puede usar directamente en JSX.
+    &&: Operador lógico, se puede usar en JSX.
+    ? : Ternario, se puede usar en JSX.
     
+    */}
 
-    const handleGuardarClick = () => {
-        if (!validarMensaje()) {
-            alert("El mensaje no puede estar vacío");
-            return;
-        }
-        setMensajeGuardado(mensaje);
-        console.log("Mensaje Guardado", mensaje)
-
-    }
-
-
-    const handleMensaje = (e) => {
-        setMensaje(e.target.value)
-    }
-
-    const toggleModo = () => {
-        setModoOscuro(prev => !prev)
-    }
-
-    return (
-        <div>
-            <div style= {{}}>
-                <p>Input Controlado</p>
-                <input
-                    type="text"
-                    value= {mensaje}
-                    onChange= {handleMensaje}
-                />
-                <button onClick={handleGuardarClick}>Guardar</button>
-                <p>Mensaje: {mensaje}</p>
-            
-                <p>Mensaje Guardado: {mensajeGuardado}</p>
-            
-            </div>
-
-            <div style={ modoOscuro ? cajas.azulOscuro : cajas.azul}>
-                <p> {modoOscuro ? "Modo Oscuro" : "Modo Claro"} </p>
-                <button onClick={toggleModo}>Cambiar</button>
-
-                
-            </div>
-        </div>
-    );
-}
-export default Estados
+    const CondicionalTernario = ({ isLoggedIn }) => {
+        return (
+          <div>
+            <h2>Renderizado con Ternario ( ? : )</h2>
+      
+            {/* Usamos el ternario para decidir qué mostrar */}
+            {isLoggedIn ? (
+              <p>Bienvenido de nuevo, usuario 🤓</p>
+            ) : (
+              <p>Por favor, inicia sesión 🔒</p>
+            )}
+          </div>
+        );
+      };
+      
+      export default CondicionalTernario;
+      

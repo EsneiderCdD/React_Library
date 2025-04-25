@@ -40,20 +40,29 @@ function Estados () {
     }
 
     return (
-        <div style= {{}}>
-            <p>Input Controlado</p>
-            <input 
-                type="text"
-                value= {mensaje}
-                onChange= {handleMensaje} 
-            />
-            <button onClick={handleGuardarClick}></button>
-
-            <p>Mensaje: {mensaje}</p>
-          
-            <p>Mensaje Guardado: {mensajeGuardado}</p>
+        <div>
+            <div style= {{}}>
+                <p>Input Controlado</p>
+                <input
+                    type="text"
+                    value= {mensaje}
+                    onChange= {handleMensaje}
+                />
+                <button onClick={handleGuardarClick}>Guardar</button>
+                <p>Mensaje: {mensaje}</p>
             
+                <p>Mensaje Guardado: {mensajeGuardado}</p>
+            
+            </div>
+
+            <div style={ modoOscuro ? cajas.azulOscuro : cajas.azul}>
+                <p> {modoOscuro ? "Modo Oscuro" : "Modo Claro"} </p>
+                <button onClick={toggleModo}>Cambiar</button>
+
+                
+            </div>
         </div>
     );
 }
 export default Estados
+
