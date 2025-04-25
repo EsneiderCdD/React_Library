@@ -40,27 +40,19 @@ function Estados () {
     }
 
     return (
-        <div>
-            <div style= {{}}>
-                <p>Input Controlado</p>
-                <input
-                    type="text"
-                    value= {mensaje}
-                    onChange= {handleMensaje}
-                />
-                <button onClick={handleGuardarClick}>Guardar</button>
-                <p>Mensaje: {mensaje}</p>
-            
-                <p>Mensaje Guardado: {mensajeGuardado}</p>
-            
-            </div>
+        <div style= {{}}>
+            <p>Input Controlado</p>
+            <input 
+                type="text"
+                value= {mensaje}
+                onChange= {handleMensaje} 
+            />
+            <button onClick={handleGuardarClick}></button>
 
-            <div style={ modoOscuro ? cajas.azulOscuro : cajas.azul}>
-                <p> {modoOscuro ? "Modo Oscuro" : "Modo Claro"} </p>
-                <button onClick={toggleModo}>Cambiar</button>
-
-                
-            </div>
+            <p>Mensaje: {mensaje}</p>
+          
+            <p>Mensaje Guardado: {mensajeGuardado}</p>
+            
         </div>
     );
 }

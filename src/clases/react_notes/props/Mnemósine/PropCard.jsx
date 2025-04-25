@@ -69,15 +69,16 @@ function App() {
 
     return (
 
-    <DiosesOlimpo 
-        nombre= "Zeus"
-        edad= {99}   
-        descripcion= "Dios del olimpo"
-        imagen= {Zeus}
-        familia= {familia}
-        
-    />  
-
+    <div>
+        <DiosesOlimpo
+            nombre= "Zeus"
+            edad= {99}
+            descripcion= "Dios del olimpo"
+            imagen= {Zeus}
+            familia= {familia}
+        />
+        <DiosesOlimpo></DiosesOlimpo>
+    </div>
     )
 }
 
