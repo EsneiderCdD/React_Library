@@ -1,18 +1,19 @@
 import React from "react";
 
-function DiosesOlimpo ({imagen, nombre, edad, descripcion, familia, }) {
+function DiosesOlimpo ({imagen, nombre = "default", edad = 0, descripcion , familia = [], }) {
 
-    const estilos = {
-        fontSize : "30px"
-        
+    const fondo = {
+       fondo1: { backgroundColor: "black"},
+        fondo2:{ backgroundColor: "blue"},
+            
     }
 
     return (
-        <div style = {{ width: "500px", height: "500px", backgroundColor:"gray", display: "flex", flexDirection: "column", alignItems: "center", padding: "50px", borderRadius: "35%"}}>
-            <img src={imagen} alt="Imagen" className="img-dios" style={{width: "250px", height: "250px",borderRadius: "50%" }} />
-            <p style={estilos}>{nombre} </p>
-            <p style={estilos}>{edad} </p>
-            <p style={estilos}>{descripcion} </p>
+        <div style = {fondo.fondo2}>
+            <img src={imagen} style={{width: "250px", height: "250px",borderRadius: "50%" }} />
+            <p>{nombre} </p>
+            <p>{edad} </p>
+            <p>{descripcion} </p>
             {familia.map((mujer, index) => (
             <div key={index}>
                 <h3>{mujer.pareja}</h3>
@@ -33,6 +34,54 @@ function DiosesOlimpo ({imagen, nombre, edad, descripcion, familia, }) {
 
 
 {/*
+    
+import DiosesOlimpo from "./clases/react_notes/props/Mnemósine/PropCard";
+import Zeus from "./assets/imagenes/Zeus.png";
+
+
+
+function App() {
+
+    const familia = [
+    { pareja: "Hera", 
+        hijos: [
+            { nombre: "Ares", rol: "XYZ"},
+            { nombre: "Hebe", rol: "XYZ"},
+            { nombre: "Hefesto", rol: "XYZ"},
+            { nombre: "Heris", rol: "XYZ"},
+        ]
+    },
+    { pareja: "Otras Diosas", 
+        hijos: [
+            { nombre: "Las nueve musas", rol: "XYZ" },
+            { nombre: "Atenea", rol: "XYZ"}, 
+            { nombre: "Apolo y Artemisa", rol: "XYZ"},
+        ]
+    },
+    { pareja: "Humanas", 
+        hijos: [
+            { nombre: "Hercules", rol: "XYZ"}, 
+            { nombre: "Helena de Troya", rol: "XYZ"}, 
+            { nombre: "Dionisio", rol: "XYZ"},
+        ]
+    },
+    ];
+
+    return (
+
+    <DiosesOlimpo 
+        nombre= "Zeus"
+        edad= {99}   
+        descripcion= "Dios del olimpo"
+        imagen= {Zeus}
+        familia= {familia}
+        
+    />  
+
+    )
+}
+
+export default App
  */}
 
 

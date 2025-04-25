@@ -1,4 +1,3 @@
-
 import DiosesOlimpo from "./clases/react_notes/props/Mnemósine/PropCard";
 import Zeus from "./assets/imagenes/Zeus.png";
 
@@ -33,15 +32,16 @@ function App() {
 
     return (
 
-    <DiosesOlimpo 
-        nombre= "Zeus"
-        edad= {99}   
-        descripcion= "Dios del olimpo"
-        imagen= {Zeus}
-        familia= {familia}
-        
-    />  
-
+    <div>
+        <DiosesOlimpo
+            nombre= "Zeus"
+            edad= {99}
+            descripcion= "Dios del olimpo"
+            imagen= {Zeus}
+            familia= {familia}
+        />
+        <DiosesOlimpo></DiosesOlimpo>
+    </div>
     )
 }
 
