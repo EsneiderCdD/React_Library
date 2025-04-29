@@ -1,6 +1,10 @@
 import React from "react";
+import { useState } from "react";
+
 
 function DiosesOlimpo ({imagen, nombre = "default", edad = 0, descripcion , familia = [], }) {
+
+    const [ cambiarColor, setCambiarColor] = useState(false);
 
     const fondo = {
        fondo1: { backgroundColor: "black"},
@@ -8,10 +12,22 @@ function DiosesOlimpo ({imagen, nombre = "default", edad = 0, descripcion , fami
             
     }
 
+    const togglebackground = () => {
+        setCambiarColor( prev => !prev);
+
+    }
+
+    const handleClick = () => {
+        alert("¡Hiciste clic en el nombre de Zeus!");
+    }
+
     return (
-        <div style = {fondo.fondo2}>
+        <div style = {cambiarColor ? fondo.fondo1 : fondo.fondo2}>
             <img src={imagen} style={{width: "250px", height: "250px",borderRadius: "50%" }} />
-            <p>{nombre} </p>
+            <p onClick= {() => 
+                {handleClick();
+                togglebackground();     
+                }} style={{cursor: "pointer"}}>{nombre} </p>
             <p>{edad} </p>
             <p>{descripcion} </p>
             {familia.map((mujer, index) => (
