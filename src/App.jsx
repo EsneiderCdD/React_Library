@@ -1,86 +1,72 @@
+import React, { useState } from "react";
 
-import {useState} from 'react';
+function Renderizacion () {
 
-function Estados () {
+    const [ nombre, setNombre ] = useState("");
+    const [ edad, setEdad ] = useState("");
+    const [ aceptado, setAceptado ] = useState(false);
 
-    const cajas = {
-        azul: {background : "#add8e6", height: "200px", width: "200px"},
-        azulOscuro: {background :"#001f3f", height: "200px", width: "200px"},
-    }
-
-    const [mensaje, setMensaje] = useState("");
-    const [mensajeGuardado, setMensajeGuardado] = useState("");
-
-    const [modoOscuro, setModoOscuro] = useState(false);
-
-
-    const validarMensaje = () => {
-        return mensaje.trim() !== ""
+    const handleNombre = (e) => {
+        setNombre(e.target.value);
     };
 
     
+    const handleEdad = (e) => {
+        setEdad(e.target.value);
+    };
 
-    const handleGuardarClick = () => {
-        if (!validarMensaje()) {
-            alert("El mensaje no puede estar vacío");
-            return;
-        }
-        setMensajeGuardado(mensaje);
-        console.log("Mensaje Guardado", mensaje)
+    const handleAceptado = (e) => {
+        setAceptado(e.target.checked);
+    };
 
+
+    let contenido;
+
+    if (nombre === "" || edad === "") {
+        contenido = <p>Por favor completa los campos.</p>;
+    } else if (isNaN(edad) || edad <= 0) {
+        contenido = <p>Edad Inválida. Debe ser un numero positivo</p>;
+    } else if (!aceptado) {
+        contenido = <p>Debes aceptar los terminos y condiciones </p>;
+    } else if (Number(edad) < 18) {
+        contenido = <p>Hola {nombre}, eres menor de edad. Acceso Denegado.</p>;
+    } else {
+        contenido = <p>Hola {nombre}, eres mayor de edad. ¡Bienvenido! </p>
     }
+    
+    
 
-
-    const handleMensaje = (e) => {
-        setMensaje(e.target.value)
-    }
-
-    const toggleModo = () => {
-        setModoOscuro(prev => !prev)
-    }
 
     return (
-        <div>
-            <div style= {{}}>
-                <p>Input Controlado</p>
+        <div style={{ border: "2px solid #888", padding: "10px", borderRadius: "10px", width: "300px" }}>
+            <h2>Renderización Condicional</h2>
+            <input 
+                type="text" 
+                value={nombre}
+                onChange={handleNombre}
+                style={{ display: "block", marginBottom: "10px" }}
+            />
+            <input 
+                type="number"
+                value={edad}
+                onChange={handleEdad} 
+                style={{ display: "block", marginBottom: "10px" }}/>
+
+
+            <label >
                 <input
-                    type="text"
-                    value= {mensaje}
-                    onChange= {handleMensaje}
-                />
-                <button onClick={handleGuardarClick}>Guardar</button>
-                <p>Mensaje: {mensaje}</p>
-            
-                <p>Mensaje Guardado: {mensajeGuardado}</p>
-            
+                    type="checkbox"
+                    checked={aceptado}
+                    onChange={handleAceptado} />
+                    Acepto los terminos y condiciones
+            </label>
+            <div style={{ marginTop: "15px" }}>
+                {contenido}
             </div>
 
-            
-
-            <div style={ modoOscuro ? cajas.azulOscuro : cajas.azul}>
-                <p> {modoOscuro ? "Modo Oscuro" : "Modo Claro"} </p>
-                <button onClick={toggleModo}>Cambiar</button>
-
-                
-            </div>
-
-            <CajaSecundaria
-                mensaje={mensaje}
-                onMensajeChange={setMensaje}/>
 
         </div>
-    );
-}
-export default Estados
 
-function CajaSecundaria ({ mensaje, onMensajeChange}) {
-    return (
-        <div>
-            <p>Caja Secundaria</p>
-            <input
-                type="text"
-                value= {mensaje}
-                onChange={(e) => onMensajeChange(e.target.value) }  />
-        </div>
     );
 }
+export default Renderizacion

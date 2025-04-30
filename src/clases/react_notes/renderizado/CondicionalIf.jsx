@@ -19,4 +19,7 @@ const CondicionalIf = ({ isLoggedIn }) => {
   };
   
   export default CondicionalIf;
+
+
+  // Tambien se conoce este condicional como "condional clasico"
   

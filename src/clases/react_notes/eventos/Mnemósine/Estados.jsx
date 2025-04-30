@@ -55,14 +55,32 @@ function Estados () {
             
             </div>
 
+            
+
             <div style={ modoOscuro ? cajas.azulOscuro : cajas.azul}>
                 <p> {modoOscuro ? "Modo Oscuro" : "Modo Claro"} </p>
                 <button onClick={toggleModo}>Cambiar</button>
 
                 
             </div>
+
+            <CajaSecundaria
+                mensaje={mensaje}
+                onMensajeChange={setMensaje}/>
+
         </div>
     );
 }
 export default Estados
 
+function CajaSecundaria ({ mensaje, onMensajeChange}) {
+    return (
+        <div>
+            <p>Caja Secundaria</p>
+            <input
+                type="text"
+                value= {mensaje}
+                onChange={(e) => onMensajeChange(e.target.value) }  />
+        </div>
+    );
+}
