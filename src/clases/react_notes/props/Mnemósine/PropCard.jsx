@@ -92,6 +92,7 @@ function App() {
             descripcion= "Dios del olimpo"
             imagen= {Zeus}
             familia= {familia}
+            
         />
         <DiosesOlimpo></DiosesOlimpo>
     </div>
