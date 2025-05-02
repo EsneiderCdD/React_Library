@@ -1,51 +1,73 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 
+function DiosesOlimpo({
+  imagen,
+  nombre = "default",
+  edad = 0,
+  descripcion,
+  familia = [],
+  children,
+  ...rest
+}) {
+  const [cambiarColor, setCambiarColor] = useState(false);
 
-function DiosesOlimpo ({imagen, nombre = "default", edad = 0, descripcion , familia = [], }) {
+  const fondo = {
+    fondo1: { backgroundColor: "black" },
+    fondo2: { backgroundColor: "blue" },
+  };
 
-    const [ cambiarColor, setCambiarColor] = useState(false);
+  const toggleBackground = () => {
+    setCambiarColor((prev) => !prev);
+  };
 
-    const fondo = {
-       fondo1: { backgroundColor: "black"},
-        fondo2:{ backgroundColor: "blue"},
-            
-    }
+  const handleClick = () => {
+    alert("¡Hiciste clic en el nombre de Zeus!");
+  };
 
-    const togglebackground = () => {
-        setCambiarColor( prev => !prev);
+  return (
+    <div style={cambiarColor ? fondo.fondo1 : fondo.fondo2} {...rest}>
+      <img
+        src={imagen}
+        style={{
+          width: "250px",
+          height: "250px",
+          borderRadius: "50%",
+        }}
+        alt={nombre}
+      />
 
-    }
+      <p
+        onClick={() => {
+          handleClick();
+          toggleBackground();
+        }}
+        style={{ cursor: "pointer" }}
+      >
+        {nombre}
+      </p>
 
-    const handleClick = () => {
-        alert("¡Hiciste clic en el nombre de Zeus!");
-    }
+      <p>{edad}</p>
+      <p>{descripcion}</p>
 
-    return (
-        <div style = {cambiarColor ? fondo.fondo1 : fondo.fondo2}>
-            <img src={imagen} style={{width: "250px", height: "250px",borderRadius: "50%" }} />
-            <p onClick= {() => 
-                {handleClick();
-                togglebackground();     
-                }} style={{cursor: "pointer"}}>{nombre} </p>
-            <p>{edad} </p>
-            <p>{descripcion} </p>
-            {familia.map((mujer, index) => (
-            <div key={index}>
-                <h3>{mujer.pareja}</h3>
-                <ul>
-                {mujer.hijos.map((hijo, i) => (
-                    <li key={i}>{hijo.nombre} - {hijo.rol}</li>
-                ))}
-                </ul>
-            </div>
+      {familia.map((mujer, index) => (
+        <div key={index}>
+          <h3>{mujer.pareja}</h3>
+          <ul>
+            {mujer.hijos.map((hijo, i) => (
+              <li key={i}>
+                {hijo.nombre} - {hijo.rol}
+              </li>
             ))}
-        
-                    </div>
-                );
-            }
+          </ul>
+        </div>
+      ))}
 
-            export default DiosesOlimpo
+      <div>{children}</div>
+    </div>
+  );
+}
+
+export default DiosesOlimpo;
 
 
 
