@@ -49,7 +49,12 @@ function App() {
             edad={99}
             descripcion= "Dios del mar"
             imagen={Poseidon}
-            />
+            
+        >
+            <button onClick={() => alert ("Tridente lanzado")}>Invocar Tridente</button>
+             </DiosesOlimpo>
+            
+
     </div>
     )
 }
