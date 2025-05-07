@@ -1,16 +1,20 @@
-const EventoSynthetic = () => {
-  const handleClick = (e) => {
-    console.log("SyntheticEvent:", e);
-    console.log("Tipo:", e.type);
-    console.log("Elemento objetivo:", e.target.tagName);
-    console.log("Evento nativo:", e.nativeEvent);
-  };
+import React, { useState, useEffect } from "react";
 
-  return (
-    <button onClick={handleClick}>
-      Haz click para ver detalles del evento
-    </button>
-  );
-};
-
-export default EventoSynthetic;
+function Reloj() {
+    const [tiempo, setTiempo] = useState(0);
+  
+    useEffect(() => {
+      const intervalo = setInterval(() => {
+        setTiempo((t) => t + 1);
+      }, 1000);
+  
+      return () => {
+        clearInterval(intervalo);
+        console.log("Reloj desmontado");
+      };
+    }, []);
+  
+    return <p>Tiempo: {tiempo} segundos</p>;
+  }
+  
+  export default Reloj;  
