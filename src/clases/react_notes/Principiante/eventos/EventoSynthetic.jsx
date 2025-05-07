@@ -1,9 +1,6 @@
-// 🧠 React usa SyntheticEvent: un wrapper del evento nativo
-// Permite comportamiento consistente entre navegadores
-// En React 17+ ya no hay pooling de eventos
-// 🧬 SyntheticEvent: evento que React usa internamente
-// 🎯 Igual para todos los navegadores, previene bugs de compatibilidad
-// 🔍 e.nativeEvent permite acceder al evento DOM puro
+//React no usa directamente los eventos nativos del navegador. 
+//En su lugar, usa un sistema llamado Synthetic Event (evento sintético), 
+//que es un envoltorio (wrapper) del evento nativo del navegador.
 
 
 const EventoSynthetic = () => {
@@ -22,4 +19,32 @@ const EventoSynthetic = () => {
   };
   
   export default EventoSynthetic;
+
+
+  //Algunos eventos son:
+// onClick => Evento de clic
+// onChange => Evento de cambio (en inputs)
+// onKeyDown => Evento de tecla presionada 
+// onMouseOver => Evento de pasar el mouse por encima
+// onFocus => Evento de enfoque (en inputs)
+// onBlur => Evento de desenfoque (cuando se sale de un input)
+// onSubmit => Evento de envío (en formularios)
+// onLoad => Evento de carga (en imágenes o componentes)
+// onScroll => Evento de desplazamiento (en contenedores con scroll)
+// onResize => Evento de cambio de tamaño (en ventanas o elementos)
+// onContextMenu => Evento de menú contextual (clic derecho)
+// onDoubleClick => Evento de doble clic
+// onTouchStart => Evento de inicio de toque (en dispositivos táctiles)
+// onTouchEnd => Evento de finalización de toque (en dispositivos táctiles)
+// onDrag => Evento de arrastre (drag)
+// onDrop => Evento de soltar (drop)
+//... y muchos más.
   
+
+//Metodos de los eventos sintéticos
+// stopPropagation() => Detiene la propagación del evento hacia arriba en el DOM.
+// preventDefault() => Evita que el comportamiento por defecto del navegador se ejecute.  
+// e.target => El elemento que disparó el evento.
+// e.currentTarget => El elemento al que se le asignó el evento.
+// e.type => El tipo de evento (click, change, etc.). 
+
