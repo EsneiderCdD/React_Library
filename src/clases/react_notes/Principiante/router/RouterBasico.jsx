@@ -1,3 +1,9 @@
+{/*<BrowserRouter>	Envuelve toda la app y habilita el uso de rutas en React.
+<Routes>	Es el contenedor moderno de todas tus rutas (v6+).
+<Route>	Define una ruta y qué componente renderizar para ese path.
+<Link to=\"...\">	Crea navegación sin recargar la página (SPA). */}
+
+
 
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 
