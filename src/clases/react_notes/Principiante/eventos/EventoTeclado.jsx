@@ -4,6 +4,8 @@
 // ⌨️ onKeyDown detecta teclas presionadas
 // ❗ event.key es el nombre de la tecla: "Enter", "Escape", etc.
 // 📍 Útil para accesibilidad, validaciones, atajos
+//  Permiten que los usuarios interactúen rápidamente con la interfaz, ya sea validando formularios, reaccionando a atajos de teclado o mejorando la accesibilidad. 
+// //React proporciona una forma sencilla de manejar estos eventos con onKeyDown, onKeyUp, y onKeyPress
 
 
 import { useState } from "react";

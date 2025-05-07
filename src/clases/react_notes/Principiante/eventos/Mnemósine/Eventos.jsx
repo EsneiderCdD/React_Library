@@ -1,7 +1,7 @@
 
 import {useState} from 'react';
 
-function Estados () {
+function Eventos () {
 
     const cajas = {
         azul: {background : "#add8e6", height: "200px", width: "200px"},
@@ -39,6 +39,12 @@ function Estados () {
         setModoOscuro(prev => !prev)
     }
 
+    const handleTeclado = (e) => {
+        if (e.key === "Enter") {
+            handleGuardarClick()
+        }
+    }
+
     return (
         <div>
             <div style= {{}}>
@@ -47,6 +53,7 @@ function Estados () {
                     type="text"
                     value= {mensaje}
                     onChange= {handleMensaje}
+                    onKeyDown={handleTeclado} // Detectar tecla Enter
                 />
                 <button onClick={handleGuardarClick}>Guardar</button>
                 <p>Mensaje: {mensaje}</p>
@@ -71,7 +78,7 @@ function Estados () {
         </div>
     );
 }
-export default Estados
+export default Eventos
 
 function CajaSecundaria ({ mensaje, onMensajeChange}) {
     return (
