@@ -40,3 +40,52 @@ Esta biblioteca contiene una serie de ejemplos prácticos y explicaciones paso a
 
 💡 *Sugerencia:* cada archivo debe entenderse como una unidad de aprendizaje. Primero comprende el "para qué" sirve el Hook, luego "cómo" se implementa, y finalmente "cuándo" y "por qué" usarlo según el contexto.
 
+# 📘 React Hooks - Guía por Archivos
+
+Este repositorio contiene ejemplos prácticos y organizados sobre los principales **React Hooks**, clasificados por nivel de dificultad. Cada archivo `.jsx` representa un hook específico, con código comentado y enfocado a su comprensión modular y progresiva.
+
+---
+
+## 🟢 Principiante
+
+### `HookUseState.jsx`
+Permite agregar y gestionar estado en componentes funcionales.
+
+### `HookUseEffect.jsx`
+Ejecuta efectos secundarios luego del renderizado, como peticiones a APIs o suscripciones.
+
+### `HookUseRef.jsx`
+Proporciona una referencia mutable que puede persistir entre renders. Útil para acceder al DOM directamente o mantener valores sin re-renderizar.
+
+---
+
+## 🟡 Intermedio
+
+### `HookUseContext.jsx`
+Permite acceder y compartir datos globales (como un tema o usuario logueado) sin pasar props manualmente.
+
+### `HookCustomHooks.jsx`
+Demuestra cómo encapsular y reutilizar lógica de componentes mediante la creación de hooks personalizados.
+
+### `HookUseReducer.jsx`
+Ofrece una forma de manejar estado complejo con una lógica similar a `Redux` mediante funciones reductoras.
+
+---
+
+## 🔴 Avanzado
+
+### `HookUseCallback.jsx`
+Devuelve una función memorizada que solo cambia si sus dependencias cambian, optimizando el render de componentes hijos.
+
+### `HookUseMemo.jsx`
+Devuelve un valor memorizado, ideal para cálculos costosos que no deberían repetirse innecesariamente.
+
+### `HookUseLayoutEffect.jsx`
+Similar a `useEffect`, pero se ejecuta sincrónicamente después de todas las mutaciones del DOM y antes del repintado.
+
+### `HookUseImperativeHandle.jsx`
+Permite a un componente hijo personalizar los valores y funciones expuestos a través de una `ref` desde el componente padre.
+
+---
+
+## 🧩 Estructura Sugerida de Archivos
