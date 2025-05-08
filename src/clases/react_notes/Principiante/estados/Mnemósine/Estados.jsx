@@ -90,7 +90,7 @@ function CajaConEstadoInterno ({mensajeInicial}) {
                 onChange= {(e) => setMensajeInterno(e.target.value)}
                 />
                 <p>Local: {mensajeInterno}</p>
-                <p>Inicial (prop): {mensajeInicial}</p>
+              
         </div>
     )
 }
