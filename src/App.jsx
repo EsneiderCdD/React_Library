@@ -1,66 +1,96 @@
-import React from "react";
 
-// Lista simple con .map()
-const frutas = ["🍎 Manzana", "🍌 Banana", "🍇 Uva"];
+import {useState} from 'react';
+function Eventos () {
+    const cajas = {
+        azul: {background : "#add8e6", height: "200px", width: "200px"},
+        azulOscuro: {background :"#001f3f", height: "200px", width: "200px"},
+    }
+    const [mensaje, setMensaje] = useState("");
+    const [mensajeGuardado, setMensajeGuardado] = useState("");
+    const [modoOscuro, setModoOscuro] = useState(false);
+    const validarMensaje = () => {
+        return mensaje.trim() !== ""
+    };
 
-// Lista de objetos con key única
-const tareas = [
-  { id: "a1", texto: "Estudiar React" },
-  { id: "b2", texto: "Practicar CSS" },
-  { id: "c3", texto: "Leer documentación" },
-];
+    const handleGuardarClick = () => {
+        if (!validarMensaje()) {
+            alert("El mensaje no puede estar vacío");
+            return;
+        }
+        setMensajeGuardado(mensaje);
+        console.log("Mensaje Guardado", mensaje)
 
-// Lista con componentes personalizados
-const productos = [
-  { id: 1, nombre: "Laptop", precio: 1200 },
-  { id: 2, nombre: "Mouse", precio: 20 },
-  { id: 3, nombre: "Monitor", precio: 300 },
-];
+    }
 
-function Producto({ nombre, precio }) {
-  return (
-    <div style={{ border: "1px solid #ccc", padding: "0.5rem", margin: "0.5rem 0" }}>
-      <h4>{nombre}</h4>
-      <p>Precio: ${precio}</p>
-    </div>
-  );
+    const handleMensaje = (e) => {
+        setMensaje(e.target.value)
+    }
+
+    const toggleModo = () => {
+        setModoOscuro(prev => !prev)
+    }
+
+    const handleTeclado = (e) => {
+        if (e.key === "Enter") {
+            handleGuardarClick()
+        }
+    }
+
+    return (
+        <div>
+            <div style= {{}}>
+                <p>Input Controlado</p>
+                <input
+                    type="text"
+                    value= {mensaje}
+                    onChange= {handleMensaje}
+                    onKeyDown={handleTeclado} // Detectar tecla Enter
+                />
+                <button onClick={handleGuardarClick}>Guardar</button>
+                <p>Mensaje: {mensaje}</p>
+
+                <p>Mensaje Guardado: {mensajeGuardado}</p>
+            </div>
+
+            <div style={ modoOscuro ? cajas.azulOscuro : cajas.azul}>
+                <p> {modoOscuro ? "Modo Oscuro" : "Modo Claro"} </p>
+                <button onClick={toggleModo}>Cambiar</button>
+        
+            </div>
+            <CajaSecundaria
+                mensaje={mensaje}
+                onMensajeChange={setMensaje}/>
+            <CajaConEstadoInterno mensajeInicial={mensajeGuardado} />
+
+        </div>
+        
+    );
+}
+export default Eventos
+
+function CajaSecundaria ({ mensaje, onMensajeChange}) {
+    return (
+        <div>
+            <p>Caja Secundaria</p>
+            <input
+                type="text"
+                value= {mensaje}
+                onChange={(e) => onMensajeChange(e.target.value) }  />
+        </div>
+    );
 }
 
-// Filter + map
-const frutasFiltradas = ["Manzana", "Banana", "Pera", "Uva", "Sandía"];
-
-export default function RenderizadoListas() {
-  return (
-    <div style={{ padding: "1rem" }}>
-      <h2>🔢 Lista con .map()</h2>
-
-      <h3>Frutas simples</h3>
-      <ul>
-        {frutas.map((fruta, index) => (
-          <li key={index}>{fruta}</li>
-        ))}
-      </ul>
-
-      <h3>Lista de tareas con ID</h3>
-      <ul>
-        {tareas.map((tarea) => (
-          <li key={tarea.id}>{tarea.texto}</li>
-        ))}
-      </ul>
-
-      <h3>Productos (con componente personalizado)</h3>
-      {productos.map((item) => (
-        <Producto key={item.id} {...item} />
-      ))}
-
-      <h3>Frutas filtradas que contienen "a"</h3>
-      <ul>
-        {frutasFiltradas
-          .filter((fruta) => fruta.toLowerCase().includes("a"))
-          .map((fruta, i) => (
-            <li key={i}>{fruta}</li>
-          ))}
-      </ul>
-    </div>
-  );
+function CajaConEstadoInterno ({mensajeInicial}) {
+    const [mensajeInterno, setMensajeInterno] = useState(mensajeInicial);
+    return (
+        <div>
+            <p>Caja con estado Interno (state from props)</p>
+            <input type="text" 
+                value={mensajeInterno}
+                onChange= {(e) => setMensajeInterno(e.target.value)}
+                />
+                <p>Local: {mensajeInterno}</p>
+              
+        </div>
+    )
 }

@@ -2,7 +2,7 @@
 // 📌 ¿Para qué sirve?
 // Permite iniciar un estado usando una prop. Ideal cuando el componente necesita empezar con cierto valor,
 // pero luego quiere tener el control completo del estado internamente (como un input editable).
-
+//Se usa solo cuando es estrictamente/justificadamente su uso.
 import { useState, useEffect } from "react";
 
 // ✅ Caso 1: Inicializa con prop, pero controla internamente
