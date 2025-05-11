@@ -64,17 +64,3 @@ Cada archivo `.jsx` representa una mini masterclass que incluye código y explic
 - **Testing de estado y hooks personalizados**
 
 ---
-
-## 🛠 Requisitos
-
-- React 18+
-- Conocimiento básico de JavaScript ES6
-- Vite o Create React App para correr los ejemplos localmente
-
----
-
-## 🚀 Empecemos por lo primero…
-
-### 🟢 `StateBasic.jsx` – La base del estado en React
-
-> **A continuación, te explico esta primera masterclass con lujo de detalles.**
