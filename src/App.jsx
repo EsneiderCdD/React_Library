@@ -1,122 +1,247 @@
-// Framer Motion es una librería de animaciones para React creada por el equipo de Framer
-// npm install framer-motion --save
+import { useState } from "react";
+function Eventos() {
+    const [mensaje, setMensaje] = useState("");
+
+    const [seleccionadas, setSeleccionadas] = useState(Array(6).fill(false)); // [false, false, ...]
+
+    const [contenidoCajas, setContenidoCajas] = useState(Array(6).fill(""));   // ["", "", ...]
+
+    const toggleSeleccionCaja = (index) => {
+    const nuevas = [...seleccionadas];
+    nuevas[index] = !nuevas[index];
+    setSeleccionadas(nuevas);
+  };
+  const procesar = () => {
+    const nuevoContenido = [...contenidoCajas];
+    seleccionadas.forEach((seleccionada, index) => {
+      if (seleccionada) {
+        nuevoContenido[index] = mensaje;
+      }
+    });
+    setContenidoCajas(nuevoContenido);
+  };
 
 
-/* Estructura basica:
-<motion.[element]
-  initial={{ ... }}
-  animate={{ ... }}
-  transition={{ ... }}
-/> 
-*/
+    const Boton = ({ texto, descripcion}) => {
+        return (
+            <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                <button
+                    style={{
+                        background: "#cccccc",
+                        height: "50px",
+                        width: "200px",
+                        marginBottom: "1rem"
+                    }}
+                >
+                    {texto}
+                </button>
+                <span>{descripcion}</span>
+                
+            </div>
+        );
+    };
 
-// motion.jsx
-import { motion } from "framer-motion";
+    const Caja = ({ color, index }) => {
+        const borde = seleccionadas[index] ? "5px solid black" : "none";
+        return (
+            <div
+                onClick={() => toggleSeleccionCaja(index)}
+                style={{
+                    background: color,
+                    height: "200px",
+                    width: "200px",
+                    border: borde
 
-export default function MotionElements() {
-  return (
-    <div style={{ display: "grid", gap: "1rem", padding: "2rem" }}>
-      <motion.h1
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.5 }}
-      >
-        Título animado
-      </motion.h1>
+                }}
+            >
+                <span style={{ color: color === "white" ? "white" : "black" }}>{contenidoCajas[index]} </span>  
+            </div>
+        );
+    };
 
-      <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-        transition={{ type: "spring", stiffness: 300 }}
-        style={{ padding: "1rem", fontSize: "1rem" }}
-      >
-        ¡Haz clic!
-      </motion.button>
+    return (
+        <div
+            style={{
+                background: "#add8e6",
+                height: "100vh",
+                width: "100%",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center"
+            }}
+        >
+            <h1>Eventos</h1>
 
+            <div style={{ display: "flex", gap: "1rem", marginBottom: "1rem"  }}>
+                <div>
+                    <Boton
+                        texto="Boton 1"
+                        descripcion="Primer Boton: Input Controlado"
+                        id={0}
+                       
+                    >
+                    
+                    </Boton>
+                    <input
+                        type="text"
+                        placeholder="Escribe algo..."
+                        style={{width:"126px"}}
+                        value={mensaje}
+                        onChange={(e) => setMensaje(e.target.value)}
+                    />
 
+                    <button onClick={procesar}>Procesar</button>
+                </div>
+                        
+                        
+                       
 
-      <motion.img
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Sphynx_-_cat._img_031.jpg/1200px-Sphynx_-_cat._img_031.jpg"
-        alt="gatito"
-        initial={{ scale: 0 }}
-        animate={{ scale: 1 }}
-        transition={{ type: "spring", duration: 1 }}
-        style={{ width: 300, borderRadius: 12 }}
-      />
-    </div>
-  );
+                <Boton texto="Boton 2"
+                         />
+                <Boton texto="Boton 3"
+                         />
+                <Boton texto="Boton 4"
+                         />
+                <Boton texto="Boton 5"
+                         />
+                <Boton texto="Boton 6"
+                         />
+            </div>
+
+               <div style={{ display: "flex", gap: "1rem" }}>
+                    <Caja color="red" index={0} />
+                    <Caja color="green" index={1} />
+                    <Caja color="blue" index={2} />
+                    <Caja color="yellow" index={3} />
+                    <Caja color="black" index={4} />
+                    <Caja color="white" index={5} />
+                </div>
+        </div>
+    );
 }
 
-// motion.div	Elemento que puede ser animado
-// initial	Estado inicial antes de que se monte el componente
-// animate	Estado final al que se anima el componente
-// transition	Define el tipo, duración y dinámica de la animación
+export default Eventos;
 
 
-// ¿Qué es motion?
-// En Framer Motion, motion es un objeto que contiene versiones animables de los elementos HTML y SVG comunes.
-// Framer Motion no interfiere con tus estilos. Puedes usar Tailwind, CSS Modules, inline styles o cualquier sistema de estilos como siempre.
-
-//Reutilización como componentes
-function AnimatedBox({ delay = 0 }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.4, delay }}
-      style={{
-        width: 100,
-        height: 100,
-        backgroundColor: "#4ade80",
-        borderRadius: 8,
-      }}
-    />
-  );
-}
-
-//los cuatro props principales que controlan la animación en Framer Motion
-
-// initial	Define el estado inicial del elemento antes de que entre en pantalla
-// animate	Define el estado final o destino de la animación
-// exit	Define el estado de salida cuando el componente se desmonta (usado con AnimatePresence)
-// transition	Controla la forma en que se ejecuta la animación (tiempo, curva, delay, tipo)
 
 
-// transition: personaliza el cómo
-// El prop transition permite controlar cómo se produce la animación.
-
-// 🔧 Propiedades comunes
-// Propiedad	Descripción
-// duration	Tiempo total de la animación (en segundos)
-// delay	Retardo antes de iniciar la animación
-// type	spring (por defecto), tween, inertia
-// ease	Tipo de curva: easeIn, easeOut, [0.17, 0.67, 0.83, 0.67], etc
-// stiffness, damping	Parámetros adicionales para animaciones tipo spring
 
 
-// 5. Secuenciar múltiples propiedades
 
-// Puedes animar varias propiedades con transiciones independientes:
 
-<motion.div
-  initial={{ x: -100, opacity: 0 }}
-  animate={{ x: 0, opacity: 1 }}
-  transition={{
-    x: { type: "spring", stiffness: 120 },
-    opacity: { duration: 0.4, ease: "easeOut" },
-  }}
-/>
 
-// Animaciones automáticas con React state
-// Este es el flujo más común: el componente cambia de estado, y Framer Motion se encarga del resto.
 
-const [expanded, setExpanded] = useState(false);
 
-<motion.div
-  animate={{ height: expanded ? 200 : 100 }}
-  transition={{ duration: 0.4 }}
-  onClick={() => setExpanded(!expanded)}
->
-  Pulsa para expandir
-</motion.div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import {useState} from 'react';
+// function Eventos () {
+//     const cajas = {
+//         azul: {background : "#add8e6", height: "200px", width: "200px"},
+//         azulOscuro: {background :"#001f3f", height: "200px", width: "200px"},
+//     }
+//     const [mensaje, setMensaje] = useState("");
+//     const [mensajeGuardado, setMensajeGuardado] = useState("");
+//     const [modoOscuro, setModoOscuro] = useState(false);
+//     const validarMensaje = () => {
+//         return mensaje.trim() !== ""
+//     };
+
+//     const handleGuardarClick = () => {
+//         if (!validarMensaje()) {
+//             alert("El mensaje no puede estar vacío");
+//             return;
+//         }
+//         setMensajeGuardado(mensaje);
+//         console.log("Mensaje Guardado", mensaje)
+
+//     }
+
+//     const handleMensaje = (e) => {
+//         setMensaje(e.target.value)
+//     }
+
+//     const toggleModo = () => {
+//         setModoOscuro(prev => !prev)
+//     }
+
+//     const handleTeclado = (e) => {
+//         if (e.key === "Enter") {
+//             handleGuardarClick()
+//         }
+//     }
+
+//     return (
+//         <div>
+//             <div style= {{}}>
+//                 <p>Input Controlado</p>
+//                 <input
+//                     type="text"
+//                     value= {mensaje}
+//                     onChange= {handleMensaje}
+//                     onKeyDown={handleTeclado} // Detectar tecla Enter
+//                 />
+//                 <button onClick={handleGuardarClick}>Guardar</button>
+//                 <p>Mensaje: {mensaje}</p>
+
+//                 <p>Mensaje Guardado: {mensajeGuardado}</p>
+//             </div>
+
+//             <div style={ modoOscuro ? cajas.azulOscuro : cajas.azul}>
+//                 <p> {modoOscuro ? "Modo Oscuro" : "Modo Claro"} </p>
+//                 <button onClick={toggleModo}>Cambiar</button>
+        
+//             </div>
+//             <CajaSecundaria
+//                 mensaje={mensaje}
+//                 onMensajeChange={setMensaje}/>
+//             <CajaConEstadoInterno mensajeInicial={mensajeGuardado} />
+
+//         </div>
+        
+//     );
+// }
+// export default Eventos
+
+// function CajaSecundaria ({ mensaje, onMensajeChange}) {
+//     return (
+//         <div>
+//             <p>Caja Secundaria</p>
+//             <input
+//                 type="text"
+//                 value= {mensaje}
+//                 onChange={(e) => onMensajeChange(e.target.value) }  />
+//         </div>
+//     );
+// }
+
+// function CajaConEstadoInterno ({mensajeInicial}) {
+//     const [mensajeInterno, setMensajeInterno] = useState(mensajeInicial);
+//     return (
+//         <div>
+//             <p>Caja con estado Interno (state from props)</p>
+//             <input type="text" 
+//                 value={mensajeInterno}
+//                 onChange= {(e) => setMensajeInterno(e.target.value)}
+//                 />
+//                 <p>Local: {mensajeInterno}</p>
+//                 <p>Inicial (prop): {mensajeInicial}</p>
+//         </div>
+//     )
+// }
