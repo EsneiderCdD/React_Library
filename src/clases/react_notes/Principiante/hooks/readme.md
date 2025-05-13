@@ -88,4 +88,36 @@ Permite a un componente hijo personalizar los valores y funciones expuestos a tr
 
 ---
 
-## 🧩 Estructura Sugerida de Archivos
+## 🧩 Estructura Sugerida de Archivo
+
+
+
+# 📘 Masterclass de React Hooks – Nivel Principiante
+
+Bienvenido/a a esta Masterclass modular sobre **React Hooks**. Este curso está diseñado para desarrolladores que ya conocen los fundamentos de React como componentes, props, eventos, formularios y renderizado condicional, y que ahora desean dominar los Hooks desde su nivel más básico.
+
+---------------------------------------------------
+
+
+
+
+
+
+## 📂 Estructura del Curso
+
+Cada tema está organizado como si fuese un archivo individual, simulando una estructura de proyecto. Esta metodología permite aprender cada concepto de forma aislada y práctica.
+
+| Archivo | Tema | Descripción breve |
+|--------|------|--------------------|
+| `HookIntro.jsx` | Introducción a los Hooks | Qué son los Hooks, por qué existen y qué problema resuelven. |
+| `HookRules.jsx` | Reglas de los Hooks | Reglas fundamentales que debes seguir al usar Hooks. |
+| `HookUseState.jsx` | `useState` | El Hook para manejar estados locales en componentes funcionales. |
+| `HookMultipleStates.jsx` | Múltiples estados con `useState` | Cómo gestionar varios estados sin complicaciones. |
+| `HookUseEffect.jsx` | `useEffect` | Manejo de efectos secundarios (peticiones, timers, DOM, etc.). |
+| `HookUseEffectCondicional.jsx` | `useEffect` con dependencias | Cómo controlar cuándo se ejecutan los efectos. |
+| `HookCleanup.jsx` | Limpieza de efectos (`cleanup`) | Evitar efectos indeseados con funciones de limpieza. |
+| `HookUseStateVsUseEffect.jsx` | `useState` vs `useEffect` | Cuándo usar uno u otro, diferencias y relación entre ellos. |
+| `HookFormularios.jsx` | Hooks en Formularios | Cómo manejar formularios y estados de inputs con Hooks. |
+| `HookResumenPractico.jsx` | Mini Proyecto de Integración | Un pequeño componente que combina `useState` y `useEffect`. |
+
+---
