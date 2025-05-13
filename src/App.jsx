@@ -1,21 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 function Eventos() {
-    const [mensaje, setMensaje] = useState("");
-
-
 
     const [cajas, setCajas] = useState([
-    { id: 1, mensaje: "", color: "red" },
-    { id: 2, mensaje: "", color: "green" },
-    { id: 3, mensaje: "", color: "blue" },
-    { id: 4, mensaje: "", color: "yellow" },
-    { id: 5, mensaje: "", color: "black" },
-    { id: 6, mensaje: "", color: "white" },
+    { id: 1, mensaje: "", color: "red", animada: false },
+    { id: 2, mensaje: "", color: "green", animada: false },
+    { id: 3, mensaje: "", color: "blue", animada: false },
+    { id: 4, mensaje: "", color: "yellow", animada: false },
+    { id: 5, mensaje: "", color: "black", animada: false },
+    { id: 6, mensaje: "", color: "white", animada: false },
     ]);
+
+    const [mensaje, setMensaje] = useState("");
 
     const [cajasSeleccionadas, setCajasSeleccionadas] = useState([]);
     
     const [efectosSeleccionados, setEfectosSeleccionados] = useState([]);
+    
+    const toggleSeleccionEfecto = (efectoId) => {
+        if (efectosSeleccionados.includes(efectoId)) {
+            setEfectosSeleccionados(efectosSeleccionados.filter((e) => e !== efectoId));
+        } else {
+            setEfectosSeleccionados([...efectosSeleccionados, efectoId]);
+        }
+    };
 
     const toggleSeleccionCaja = (id) => {
     if (cajasSeleccionadas.includes(id)) {
@@ -28,6 +36,7 @@ function Eventos() {
     const efectos = {
         1: (caja) => ({ ...caja, mensaje }), // Aplica el mensaje
         2: (caja) => ({ ...caja, color: getRandomColor() }), // Cambia el color
+        3: (caja) => ({ ...caja, animada: true})
         // Puedes dejar espacio aquí para los efectos 3–6
         };
 
@@ -57,17 +66,6 @@ function Eventos() {
     setCajas(nuevasCajas);
     };
 
-
-    const toggleSeleccionEfecto = (efectoId) => {
-    if (efectosSeleccionados.includes(efectoId)) {
-        setEfectosSeleccionados(efectosSeleccionados.filter((e) => e !== efectoId));
-    } else {
-        setEfectosSeleccionados([...efectosSeleccionados, efectoId]);
-    }
-};
-
-
-
     const Boton = ({ texto, descripcion, id}) => {
         return (
             <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
@@ -88,28 +86,52 @@ function Eventos() {
         );
     };
 
-   const Caja = ({ color, id, mensaje }) => {
+   const Caja = ({ color, id, mensaje, animada, }) => {
     const seleccionada = cajasSeleccionadas.includes(id);
     const borde = seleccionada ? "5px solid black" : "none";
+    const cajaBase = {
+        background: color,
+        height: "200px",
+        width: "200px",
+        border: borde,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center"
 
-    return (
-        <div
-        onClick={() => toggleSeleccionCaja(id)}
-        style={{
-            background: color,
-            height: "200px",
-            width: "200px",
-            border: borde,
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center"
-        }}
-        >
-        <span style={{ color: color === "white" ? "white" : "black" }}>{mensaje}</span>
-        </div>
-    );
     };
 
+    useEffect(() => {
+        if (animada) {
+            const timer = setTimeout(() => {
+                setCajas((prevCajas) =>
+                    prevCajas.map((caja) =>
+                        caja.id === id ? { ...caja, animada: false } : caja
+                    )
+                );
+            }, 2500); // 2.5 segundos (ligeramente más que la duración de animación)
+
+            return () => clearTimeout(timer);
+        }
+    }, [animada, id]);
+
+    return animada ? (
+        <motion.div
+            onClick={() => toggleSeleccionCaja(id)}
+            style={cajaBase}
+            animate={{ rotate: 360 }}
+            transition={{ duration: 1, repeat: 2 }}
+        >
+            <span>{mensaje}</span>
+        </motion.div>
+    ) : (
+        <div
+            onClick={() => toggleSeleccionCaja(id)}
+            style={cajaBase}
+        >
+            <span>{mensaje}</span>
+        </div>
+    );
+};
 
     return (
         <div
@@ -129,10 +151,8 @@ function Eventos() {
                     <Boton
                         texto="Boton 1"
                         descripcion="Primer Boton: Input Controlado"
-                        id={1}
-                       
+                        id={1}  
                     >
-                    
                     </Boton>
                     <input
                         type="text"
@@ -141,8 +161,6 @@ function Eventos() {
                         value={mensaje}
                         onChange={(e) => setMensaje(e.target.value)}
                     />
-
-                    
                 </div>
                         
                         
@@ -153,7 +171,9 @@ function Eventos() {
 
 
 
-                <Boton texto="Boton 3" id={3} />
+                <Boton texto="Boton 3"
+                        descripcion= "Animar"
+                        id={3} />
                 <Boton texto="Boton 4" id={4} />
                 <Boton texto="Boton 5" id={5} />
                 <Boton texto="Boton 6" id={6} />
@@ -166,6 +186,7 @@ function Eventos() {
                     id={caja.id}
                     color={caja.color}
                     mensaje={caja.mensaje}
+                    animada={caja.animada}
                     />
                 ))}
                 </div>
