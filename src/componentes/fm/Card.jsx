@@ -19,7 +19,7 @@ export default Card
 const styles = {
     card: { height : "auto", width: "300px", border: "2px solid #cccc", padding: "1rem", margin: "1rem", display : "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"},
 
-    titulo: {},
+    titulo: {marginBottom: "0", marginTop: "0"},
 
     descripcion: {
         fontSize: "0.95rem",

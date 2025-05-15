@@ -5,7 +5,7 @@ import Card from "./componentes/fm/Card";
 function FMBasic() {
   return (
     <div>
-      <h1 style={{ textAlign: "center", marginBottom: "3rem" }}>Framer Motion</h1>
+      <h1 style={{ textAlign: "center" }}>Framer Motion</h1>
 
       <Card
         titulo="Initial y Animate"
