@@ -49,3 +49,13 @@ Cada archivo `.jsx` representa una mini masterclass que incluye código y explic
 
 > Este repositorio está organizado por **módulos temáticos**. Cada módulo (como `Estado`, `Eventos`, `Renderizado`, etc.) sigue la misma estructura de niveles: básico, intermedio y avanzado, con archivos individuales por concepto.
 
+| Módulo | Título                                          | Contenido clave                                                                                                                              |
+| :----: | :---------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------- |
+|    1   | **Introducción a las APIs y HTTP**              | • ¿Qué es una API?<br>• Métodos HTTP (GET, POST, PUT, DELETE)<br>• Formato JSON                                                              |
+|    2   | **Fetch() en JavaScript puro**                  | • Sintaxis básica de `fetch`<br>• Promesas: `then()` y `catch()`<br>• Leer y convertir JSON                                                  |
+|    3   | **Integración en React con useEffect/useState** | • Estado de datos (`useState`)<br>• Efectos en montaje (`useEffect` con `[]`)<br>• Flujo de carga y renderizado condicional                  |
+|    4   | **Manejo de estados: loading y error**          | • Patrones de 3 estados (cargando, datos, error)<br>• Mostrar spinners y mensajes de error                                                   |
+|    5   | **Async/Await en React**                        | • Reescribir `fetch` con `async`/`await`<br>• Estructura `try/catch/finally`                                                                 |
+|    6   | **GET avanzado: renderizado de listas**         | • Mapear arrays de datos<br>• Claves únicas (`key`)<br>• Diferentes tipos de datos (texto, imágenes)                                         |
+|    7   | **POST de datos**                               | • Enviar datos al servidor<br>• Configurar `fetch` con `method`, `headers` y `body` (JSON.stringify)<br>• Leer respuesta del POST            |
+|    8   | **Buenas prácticas y organización**             | • Extraer llamadas a API en funciones/servicios separados<br>• Variables de entorno (API keys)<br>• Limpieza de efectos (abortar peticiones) |
