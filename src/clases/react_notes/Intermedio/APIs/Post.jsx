@@ -2,25 +2,21 @@
 import { useState } from 'react';
 
 function CrearPost () {
-    //guarda lo que se escribe en el campo titulo
     const [titulo, setTitulo] = useState ('');
-    //guarda lo que se escribe en el campo contenido
     const [contenido, setContenido] = useState ('');
-    //nos sirve para mostrar el mensaje o el error
     const [mensaje, setMensaje] = useState ('');
 
-    //al dar click en publicar llamamos a esta funcion 
-    async function manejarEnvio(e) {
+   async function manejarEnvio(e) {
     e.preventDefault(); // evita que el formulario recargue la página
     setMensaje('Enviando...');
 
     try {
       const res = await fetch('https://jsonplaceholder.typicode.com/posts', {
-        method: 'POST', //enviamos datos
-        headers: { //Aqui decimos que valores vamos a enviar
-          'Content-Type': 'application/json', //le decimos en que formato lo enviamos JSON
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ //lo convertimos en JSON
+        body: JSON.stringify({
           title: titulo,
           body: contenido,
           userId: 1
@@ -31,10 +27,8 @@ function CrearPost () {
         throw new Error('Error al enviar el post');
       }
 
-      const data = await res.json(); //convierte la respuesta del servidor
-      
-      //queremos hacer un feedback por lo que: 
-      setMensaje(`✅ Post creado con ID: ${data.id}`); 
+      const data = await res.json();
+      setMensaje(`✅ Post creado con ID: ${data.id}`);
       setTitulo('');
       setContenido('');
     } catch (err) {
@@ -51,8 +45,8 @@ function CrearPost () {
             <form onSubmit={manejarEnvio}>
                 <input type="text"
                 placeholder="Título del post"
-                value={titulo} //lo que se escribe en el campo
-                onChange={e=> setTitulo (e.target.value)} />
+                value={titulo}
+                onChange={e=> setContenido (e.target.value)} />
                 <br />
 
                 <textarea placeholder="Contenido"
