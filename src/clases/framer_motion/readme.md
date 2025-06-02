@@ -62,4 +62,10 @@
   Domina el control fino sobre cómo se comporta la animación.
 
 ---
-
+**TEMAS EXTRAS**
+| Propiedad         | Uso                                         |
+| ----------------- | ------------------------------------------- |
+| `repeat`          | Repite la animación (`Infinity`, `2`, etc.) |
+| `repeatType`      | `'loop'`, `'reverse'`, `'mirror'`           |
+| `repeatDelay`     | Espera entre repeticiones                   |
+| `staggerChildren` | Retardo entre hijos (en `motion.ul`)        |
