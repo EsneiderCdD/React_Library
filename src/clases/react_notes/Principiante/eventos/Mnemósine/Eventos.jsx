@@ -17,6 +17,13 @@ function Eventos() {
     
     const [efectosSeleccionados, setEfectosSeleccionados] = useState([]);
     
+    const efecto4Activo = efectosSeleccionados.includes(4);
+
+    const handleEnterKey = (event) => {
+        if (event.key === "Enter" && cajasSeleccionadas.length > 0) {
+            alert(`El numero de cajas seleccionadas es: ${cajasSeleccionadas}`)
+    };
+    };
     const toggleSeleccionEfecto = (efectoId) => {
         if (efectosSeleccionados.includes(efectoId)) {
             setEfectosSeleccionados(efectosSeleccionados.filter((e) => e !== efectoId));
@@ -36,7 +43,8 @@ function Eventos() {
     const efectos = {
         1: (caja) => ({ ...caja, mensaje }), // Aplica el mensaje
         2: (caja) => ({ ...caja, color: getRandomColor() }), // Cambia el color
-        3: (caja) => ({ ...caja, animada: true})
+        3: (caja) => ({ ...caja, animada: true}),
+        4: (caja) => caja
         // Puedes dejar espacio aquí para los efectos 3–6
         };
 
@@ -119,7 +127,7 @@ function Eventos() {
             onClick={() => toggleSeleccionCaja(id)}
             style={cajaBase}
             animate={{ rotate: 360 }}
-            transition={{ duration: 1, repeat: 2 }}
+            transition={{ duration: 1, repeat: 1 }}
         >
             <span>{mensaje}</span>
         </motion.div>
@@ -178,6 +186,7 @@ function Eventos() {
                 <Boton texto="Boton 5" id={5} />
                 <Boton texto="Boton 6" id={6} />
             </div>
+            
 
                <div style={{ display: "flex", gap: "1rem" }}>
                 {cajas.map((caja) => (
@@ -213,3 +222,18 @@ function Eventos() {
 }
 
 export default Eventos;
+
+
+
+
+
+// 🧠 Sobre tu pregunta del comportamiento aleatorio con el efecto 3 (rotación)
+// Gran pregunta, y sí, sé lo que ocurre:
+// 🔁 El estado animada se activa al aplicar el efecto 3, y se desactiva 2.5s después mediante un setTimeout en useEffect.
+// ⚠️ Pero si vuelves a dar clic en “Procesar” antes de que animada haya vuelto a false, el efecto 3 no se vuelve a aplicar porque ya estaba en true, así que:
+// La animación no se reinicia porque Framer Motion solo detecta cambios de estado nuevos.
+// Las cajas que siguen con animada: true no "repiten" la animación.
+// Resultado: no todas las cajas giran, o algunas parecen no reaccionar.
+// 💡 Solución (si lo quisiéramos resolver):
+// Tendrías que forzar un cambio de estado para que animada: false se active antes, o incluso usar una prop clave (key) o animate con una prop dependiente para forzar el re-render.
+// Pero eso no lo haremos ahora, porque no quieres la solución, sino la explicación. ✔️
