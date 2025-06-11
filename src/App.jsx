@@ -27,18 +27,17 @@ function EstadosYEventos () {
 
     const Boton = ({texto, descripcion, id}) => {
         return (
-            <div 
-                onClick = {() => toggleSeleccionEfecto(id)}
-                style={{
-                height: "50px",
-                width: "200px",
-               
-            }}>
-                <div><button>{texto}</button></div>
+            <div>
+                <button
+                    onClick = {() => toggleSeleccionEfecto(id)}
+                    style={{
+                    height: "50px",
+                    width: "200px",
+                    }}>
+                    {texto}
+                </button>
                 <span>{descripcion}</span>
             </div>
-            
-
         );
     }
     const Caja = ({}) => {
@@ -47,7 +46,6 @@ function EstadosYEventos () {
                 background: "red",
                 height: "200px",
                 width: "200px",
-                
             }}>
             </div>
         );
