@@ -31,7 +31,7 @@
 // }, []);
 
 ;
-import { div } from "framer-motion/client";
+
 // import { useState, useEffect } from 'react';
 
 // function Pelicula() {

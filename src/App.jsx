@@ -1,74 +1,59 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-function EstadosYEventos () {
-    const [cajas, setCajas] = useState([
-        {id: 1, mensaje: "", color: "red"},
-        {id: 2, mensaje: "", color: "green"},
-    ])
+function RickMorty() {
+    const [busqueda, setBusqueda] = useState('');
+    const [personaje, setPersonaje] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const [efectosSeleccionados, setEfectosSeleccionados] = useState([]);
-    const [cajasSeleccionadas, setCajasSeleccionadas] = useState([]);
-    const [mensaje, setMensaje] = useState("");
+    async function buscarPersonaje(e) {
+        e.preventDefault();
 
-    const toggleSeleccionEfecto = (efectoId) => {
-        if (efectosSeleccionados.includes(efectoId)) {
-            setEfectosSeleccionados(efectosSeleccionados.filter((e) => e !== efectoId));
-        } else {
-            setEfectosSeleccionados([...efectosSeleccionados, efectoId]);
-        };
-     }
-         const toggleSeleccionCaja = (id) => {
-        if (cajasSeleccionadas.includes(id)) {
-            setCajasSeleccionadas(cajasSeleccionadas.filter((e) => e !== efectoId));
-        } else {
-            setCajasSeleccionadas([...cajasSeleccionadas, id]);
-        };
-     }
+        setLoading(true);
+        setError(null);
 
-    const Boton = ({texto, descripcion, id}) => {
-        return (
-            <div>
-                <button
-                    onClick = {() => toggleSeleccionEfecto(id)}
-                    style={{
-                    height: "50px",
-                    width: "200px",
-                    }}>
-                    {texto}
-                </button>
-                <span>{descripcion}</span>
-            </div>
-        );
-    }
-    const Caja = ({}) => {
-        return (
-            <div style={{
-                background: "red",
-                height: "200px",
-                width: "200px",
-            }}>
-            </div>
-        );
+        try {
+            const res = await fetch(`https://rickandmortyapi.com/api/character/?name=${busqueda}`);
+
+            if (!res.ok) {
+                throw new Error('No se pudo cargar el personaje');
+            }
+
+            const data = await res.json();
+            setPersonaje(data.results);
+        } catch (err) {
+            setError(err.message);
+            setPersonaje([]);
+        } finally {
+            setLoading(false);
+        }
     }
     return (
-        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
-            <h1>Estados y Eventos</h1>
-            <div style={{display: "flex" }}>
-                <Boton texto="Boton 1" descripcion="Descripcion del Boton 1"/>
-                <input 
-                    type="text"
-                    placeholder="Escribe algo"
-                    onChange={(e) => setMensaje(e.target.value)}
-                    value={mensaje}
-                    />
-                <Boton texto="Boton 2"/>
-            </div> 
-            <div style={{display: "flex" }}>
-                <Caja/>
-                <Caja/>
-            </div> 
-        </div>
+        <div>
+            <h2> Buscar Personaje</h2>
 
+            <form onSubmit={buscarPersonaje}>
+                <input type="text" value={busqueda} onChange={e => setBusqueda(e.target.value)} />
+                <button type="submit">Buscar</button>
+            </form>
+
+            {loading && <p>Cargando personaje...</p>}
+
+            {error && <p>Error: {error}</p>}
+
+            <ul>
+                {personaje.map(p => (
+
+                    <li key={p.id}>
+                        <h3>{p.name}</h3>
+                        <img src={p.image} alt={p.name} />
+                    </li>
+
+                ))}
+            </ul>
+        </div>
     );
+
 }
-export default EstadosYEventos
+
+export default RickMorty
