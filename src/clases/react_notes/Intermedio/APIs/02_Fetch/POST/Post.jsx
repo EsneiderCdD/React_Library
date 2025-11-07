@@ -1,12 +1,12 @@
 
 import { useState } from 'react';
 
-function CrearPost () {
-    const [titulo, setTitulo] = useState ('');
-    const [contenido, setContenido] = useState ('');
-    const [mensaje, setMensaje] = useState ('');
+function CrearPost() {
+  const [titulo, setTitulo] = useState('');
+  const [contenido, setContenido] = useState('');
+  const [mensaje, setMensaje] = useState('');
 
-   async function manejarEnvio(e) {
+  async function manejarEnvio(e) {
     e.preventDefault(); // evita que el formulario recargue la página
     setMensaje('Enviando...');
 
@@ -34,32 +34,32 @@ function CrearPost () {
     } catch (err) {
       setMensaje(`❌ Error: ${err.message}`);
     }
-    }
+  }
 
-    return (
-        <div>
-            <h2>
-                Crear Nuevo Post 
-            </h2>
+  return (
+    <div>
+      <h2>
+        Crear Nuevo Post
+      </h2>
 
-            <form onSubmit={manejarEnvio}>
-                <input type="text"
-                placeholder="Título del post"
-                value={titulo}
-                onChange={e=> setContenido (e.target.value)} />
-                <br />
+      <form onSubmit={manejarEnvio}>
+        <input type="text"
+          placeholder="Título del post"
+          value={titulo}
+          onChange={e => setTitulo(e.target.value)} />
 
-                <textarea placeholder="Contenido"
-                value={contenido}
-                onChange={e => setContenido(e.target.value)}></textarea>
-                <br />
 
-                <button type="submit">Publicar</button>
+        <textarea placeholder="Contenido"
+          value={contenido}
+          onChange={e => setContenido(e.target.value)}></textarea>
 
-            </form>
 
-            {mensaje && <p>{mensaje}</p>}
-        </div>
-    );
+        <button type="submit">Publicar</button>
+
+      </form>
+
+      {mensaje && <p>{mensaje}</p>}
+    </div>
+  );
 }
 export default CrearPost
