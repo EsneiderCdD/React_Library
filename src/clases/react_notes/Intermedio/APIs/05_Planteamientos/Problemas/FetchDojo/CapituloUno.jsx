@@ -41,7 +41,7 @@
 // export default Personaje;
 
 
-// // GET -> ¿ Y si fueran varios ?
+// // GET -> ¿ Y si fueran varios ? 🥋🥋
 
 // import { useState, useEffect } from 'react'
 
@@ -59,7 +59,7 @@
 //                     throw new Error('Houston, Houston!');
 //                 }
 //                 const data = await res.json();
-//                 setPersonajes(data.results.slice(0, 5)); // ( ͡👁️ ͜ʖ ͡👁️) Objeto(data) -> Propiedad(results) -> Extraemos.
+//                 setPersonajes(data.results.slice(0, 5)); // ( ͡👁️ ͜ʖ ͡👁️) Objeto(data) -> Propiedad(results) -> Extraemos.  
 //             } catch (err) {
 //                 setError(err.message);
 //             } finally {
@@ -86,3 +86,28 @@
 //     )
 // }
 // export default Personajes;
+
+// // GET -> Objeto y Propiedades **PLUS( ͡👁️ ͜ʖ ͡👁️ )PLUS**
+
+// import { useEffect } from 'react'
+
+// function Personaje() {
+//     useEffect(() => {
+//         async function obtenerPersonaje() {
+//             const res = await fetch('https://rickandmortyapi.com/api/character/');
+//             const data = await res.json();
+
+//             console.log('--> Objeto Completo: ', data);
+//             console.log('--> Propiedades Principales: ', Object.keys(data));
+//             console.log('--> Primer Personaje: ', data.results[0]);
+//             console.log('--> Propiedades del primer personaje: ', Object.keys(data.results[0]))
+//         };
+//         obtenerPersonaje();
+//     }, []);
+
+//     return (
+//         <></>
+//     );
+
+// }
+// export default Personaje
