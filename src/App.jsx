@@ -87,37 +87,28 @@
 // }
 // export default Personajes;
 
+// // GET -> Objeto y Propiedades **PLUS( ͡👁️ ͜ʖ ͡👁️ )PLUS**
 
+// import { useEffect } from 'react'
 
+// function Personaje() {
+//     useEffect(() => {
+//         async function obtenerPersonaje() {
+//             const res = await fetch('https://rickandmortyapi.com/api/character/');
+//             const data = await res.json();
 
+//             console.log('--> Objeto Completo: ', data);
+//             console.log('--> Propiedades Principales: ', Object.keys(data));
+//             console.log('--> Primer Personaje: ', data.results[0]);
+//             console.log('--> Propiedades del primer personaje: ', Object.keys(data.results[0]))
+//         };
+//         obtenerPersonaje();
+//     }, []);
 
+//     return (
+//         <></>
+//     );
 
+// }
+// export default Personaje
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// useEffect(() => {
-//   async function obtenerPersonaje() {
-//     const res = await fetch('https://rickandmortyapi.com/api/character');
-//     const data = await res.json();
-
-//     console.log('👉 Objeto completo:', data);
-//     console.log('🔑 Propiedades principales:', Object.keys(data));
-//     console.log('📦 Primer personaje:', data.results[0]);
-//     console.log('🔑 Propiedades del primer personaje:', Object.keys(data.results[0]));
-//   }
-
-//   obtenerPersonaje();
-// }, []);
