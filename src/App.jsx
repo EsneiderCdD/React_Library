@@ -1,5 +1,10 @@
-function Vacio() {
-  return <></>;
-}
+import Index from "./clases/react_notes/Intermedio/PropType";
 
-export default Vacio;
+function App() {
+  return (
+    <Index>
+
+    </Index>
+  )
+} 
+export default App;
