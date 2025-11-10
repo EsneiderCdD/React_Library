@@ -97,3 +97,50 @@
 
 // }
 // export default Index;
+
+
+import { useState, useEffect } from "react";
+import fetchData from "../APIs/02_Planteamientos/Problemas/Soluciones/devTools";
+import Props from "@intermedio/PropType/Props/02_Planteamientos/Props.jsx";
+
+function Index() {
+    const [devTools, setDevTools] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState();
+
+    useEffect(() => {
+        async function Tools() {
+            try {
+                setLoading(true);
+                const data = await fetchData();
+                setDevTools(data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        }
+        Tools();
+    }, []);
+
+    if (loading) return  <h1> Cargando ... </h1>;
+    if (error) return <h2> error : {error} </h2>
+
+    return (
+        <div>
+            <h1>Hola crack  </h1>
+            <h2>Parece que empezar por el lado mas dificil tiene sus frutos</h2>
+            {devTools.map((tool) => (
+                <Props
+                    key={tool.id}
+                    title={tool.title}
+                    url={tool.url}
+                    descripcion={tool.descripcion}
+                >
+
+                </Props>
+            ))}
+        </div>
+    )
+}
+export default Index;

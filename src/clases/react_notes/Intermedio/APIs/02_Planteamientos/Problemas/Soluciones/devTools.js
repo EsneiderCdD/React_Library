@@ -31,3 +31,22 @@
 //     }
 
 // }
+
+// (3)
+
+const API = "http://localhost:3000/devTools"
+async function fetchData() {
+
+    try {
+        const res = await fetch(API);
+        if (!res.ok) {
+            throw new Error('HOUSTON PROBLEMAS');
+        }
+        const data = await res.json();
+        return data;
+    } catch (error) {
+        throw error ;
+    }
+
+}
+export default fetchData
