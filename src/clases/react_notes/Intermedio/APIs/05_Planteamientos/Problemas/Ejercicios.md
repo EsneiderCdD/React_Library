@@ -1,56 +1,45 @@
 DESAFIOS:
-
-1) Seleccionar Selectivamente en una Pagina. (Conociendo su resultado)
-
-setPersonajes([data.results[0], data.results[1]]);
-
-{
-    personajes.map(p => (
-        <div key={p.id}>
-            <img src={p.image} alt={p.name} />
-            <p>{p.name}</p>
-        </div>
-    ))
-}
-
-
-
-2) Seleccionar Selectivamente en una Pagina. (Sin saberlo, Buscando)
-
-const rick = data.results.find(p => p.name === 'Rick Sanchez');
-const morty = data.results.find(p => p.name === 'Morty Smith');
-
-<div>
-    <h2>{rick.name}</h2>
-    <img src={rick.image} alt={rick.name} />
-    <h2>{morty.name}</h2>
-    <p>Origen: {morty.origin.name}</p>
-</div>
-
-3) GET: ¿ si necito saber su index ?
-
-    Cuando haces un.map() puedes acceder a dos cosas:
-El elemento(p)
-El índice(index)
-
-{
-    data.results.map((p, index) => (
-        <div key={p.id}>
-            <p>{index}: {p.name}</p>
-        </div>
-    ))
-}
-
-4) Buscandolo.
-
-const indexMorty = data.results.findIndex(p => p.name === 'Morty Smith');
-console.log(indexMorty);
-
 5) Renderizado Condicional
 
-if (p.name === "Rick Sanchez")
-} else if (p.name === "Morty Smith") 
-} else {
+    {p.name === "Rick Sanchez" ? <Rick /> : null}
+
+
+    if (p.name === "Rick Sanchez")
+    } else if (p.name === "Morty Smith") 
+    } else {
+
+    if (p.name === "Rick Sanchez") {
+    return <Rick />;
+    } else {
+    return <Morty />;
+    }
+
+    if (p.name === "Rick Sanchez") {
+    return <Rick />;
+    } else if (p.name === "Morty Smith") {
+    return <Morty />;
+    } else if (p.name === "Summer Smith") {
+    return <Summer />;
+    } else {
+    return <Desconocido />;
+    }
+
+    switch (p.name) {
+    case "Rick Sanchez":
+        return <Rick />;
+    case "Morty Smith":
+        return <Morty />;
+    case "Summer Smith":
+        return <Summer />;
+    default:
+        return <Desconocido />;
+    }
+
+
+
+
+
+        
 
 6) Crea reglas y mapealas.
 
