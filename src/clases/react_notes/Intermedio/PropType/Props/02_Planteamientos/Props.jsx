@@ -1,3 +1,5 @@
+import { developerTools } from "../../PropType/02_Planteamientos/PropType.types";
+
 function Props ({ id, title, url , descripcion  }) {
     return (
         <div>
@@ -8,4 +10,6 @@ function Props ({ id, title, url , descripcion  }) {
         </div>
     )
 } 
+Props.propTypes = developerTools;
+
 export default Props;

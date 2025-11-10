@@ -1,17 +1,24 @@
-PropTypes es una herramienta de validación de tipos para React.
+# 🧩 PropTypes en React
+
+**PropTypes** es una herramienta de **validación de tipos** para React.  
 Su función es:
 
-“asegurarse de que los componentes reciban las props del tipo correcto”.
+> “Asegurarse de que los componentes reciban las *props* del tipo correcto”.
 
+---
 
-npm install prop-types
+## ⚙️ Instalación
 
-
-
-
-TIPOS BASICOS 
+Instálalo con npm o yarn:
 
 npm install prop-types
+
+
+## ⚙️ Tipos básicos disponibles
+
+
+
+
 | Tipo                | Ejemplo                        | Qué valida       |
 | ------------------- | ------------------------------ | ---------------- |
 | `PropTypes.string`  | `"Hola"`                       | Cadenas de texto |
