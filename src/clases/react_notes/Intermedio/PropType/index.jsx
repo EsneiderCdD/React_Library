@@ -1,59 +1,99 @@
-import { useState, useEffect } from 'react'
-import Props from '@intermedio/PropType/Props/02_Planteamientos/Props.jsx'
-import { getDevTools } from '@intermedio/APIs/02_Planteamientos/Problemas/Soluciones/devTools.js'
+// import { useState, useEffect } from 'react'
+// import Props from '@intermedio/PropType/Props/02_Planteamientos/Props.jsx'
+// import { getDevTools } from '@intermedio/APIs/02_Planteamientos/Problemas/Soluciones/devTools.js'
+
+// function Index() {
+//     const [devTools, setDevTools] = useState([]);
+//     const [error, setError] = useState(null);
+//     const [loading, setLoading] = useState(true);
+
+//     useEffect(() => {
+
+//         async function fetchData() {
+
+//             try {
+//                 setLoading(true);
+//                 const data = await getDevTools();
+//                 setDevTools(data);
+
+//             } catch (err) {
+//                 setError(err.message);
+
+//             } finally {
+//                 setLoading(false);
+//             }
+//         }
+//         fetchData();
+//     }, []);
+
+//     if (loading) return <p>Cargando datos ... </p>;
+//     if (error) return <p>Error: {error} </p>;
+
+//     return (
+//         <div>
+//             <h1>Developer Tools</h1>
+
+//             {devTools.map((tool) => (
+//                 <Props
+//                     key={tool.id}
+//                     id={tool.id}
+//                     title={tool.title}
+//                     descripcion={tool.descripcion}
+//                     url={tool.url}>
+//                 </Props>
+//             ))}
+//         </div>
+//     )
+
+// }
+// export default Index;
 
 
+// (2)
 
-function Index() {
-    const [devTools, setDevTools] = useState([]);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
+// import { useState, useEffect, use } from "react";
+// import getDevTools from "../APIs/02_Planteamientos/Problemas/Soluciones/devTools";
+// import Props from '@intermedio/PropType/Props/02_Planteamientos/Props.jsx'
 
-    useEffect(() => {
+// function Index() {
+//     const [developerTools, setDeveloperTools] = useState([]);
+//     const [error, setError] = useState(null);
+//     const [loading, setLoading] = useState(true);
 
-        async function fetchData() {
+//     useEffect(() => {
+//         async function devTool() {
+//             try {
+//                 setLoading(true);
+//                 const data = await getDevTools();
+//                 setDeveloperTools(data);
+//             } catch (err) {
+//                 setError(err.message);
+//             } finally {
+//                 setLoading(false);
+//             }
 
+//         }
+//         devTool();
+//     }, []);
 
-            try {
-                setLoading(true);
-                const data = await getDevTools();
-                setDevTools(data);
+//     if (loading) return <h1>Cargando Rey...</h1>
+//     if (error) return <h1>Error : {error}</h1>
 
-            } catch (err) {
-                setError(err.message);
+//     return (
+//         <div>
+//             <h1>Hola Crack te felicito estas melo en react</h1>
+//             <h2>Ya sabes que tienes que hacer</h2>
+//             {developerTools.map((tool) => (
+//             <Props
+//                 key={tool.id}
+//                 title={tool.title}
+//                 url={tool.url}
+//                 descripcion={tool.descripcion}
+//             >
+//             </Props>
+//             ))}
+//         </div>
+//     )
 
-            } finally {
-                setLoading(false);
-            }
-        }
-        fetchData();
-    }, []);
-
-    if (loading) return <p>Cargando datos ... </p>;
-    if (error) return <p>Error: {error} </p>;
-
-
-    return (
-        <div>
-            <h1>Developer Tools</h1>
-            
-            {devTools.map((tool) => (
-                <Props
-                    key={tool.id}
-                    id={tool.id}
-                    title={tool.title}
-                    descripcion={tool.descripcion}
-                    url={tool.url}
-
-                >
-
-                </Props>
-            ))}
-
-
-
-        </div>
-    )
-
-}
-export default Index;
+// }
+// export default Index;

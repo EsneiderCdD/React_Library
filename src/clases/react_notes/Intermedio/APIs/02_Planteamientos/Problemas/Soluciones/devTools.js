@@ -1,16 +1,33 @@
-const API_DEVELOPER_TOOLS = "http://localhost:3000/devTools";
+// const API_DEVELOPER_TOOLS = "http://localhost:3000/devTools";
+// export async function getDevTools() {
+//     try {
+//         const res = await fetch(API_DEVELOPER_TOOLS);
+//         if (!res.ok) {
+//             throw new Error('Ey ey! tenemos problemas!');
+//         }
+//         const data = await res.json();
+//         return data
 
-export async function getDevTools() {
-    try {
-        const res = await fetch(API_DEVELOPER_TOOLS);
-        if (!res.ok) {
-            throw new Error('Ey ey! tenemos problemas!');
-        }
-        const data = res.json();
-        return data
+//     } catch (error) {
+//         throw error;
+//     }
+// }
 
-    } catch (error) {
-        console.log('Error', error);
-        return
-    }
-}
+// (2)
+
+// const API = "http://localhost:3000/devTools"
+
+// export default async function getDevTools() {
+
+//     try {
+//         const res = await fetch(API);
+//         if (!res.ok) {
+//             throw new Error('Error Houston!');
+//         }
+//         const data = await res.json();
+//         return data;
+//     } catch (error) {
+//         throw error;
+//     }
+
+// }
