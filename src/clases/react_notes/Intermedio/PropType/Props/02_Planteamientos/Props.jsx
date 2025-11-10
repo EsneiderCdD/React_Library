@@ -1,6 +1,6 @@
 import { developerTools } from "../../PropType/02_Planteamientos/PropType.types";
 
-function Props ({ id, title, url , descripcion  }) {
+function PropsCard ({ id, title, url , descripcion  }) {
     return (
         <div>
             <h1>{title}</h1>
@@ -10,6 +10,6 @@ function Props ({ id, title, url , descripcion  }) {
         </div>
     )
 } 
-Props.propTypes = developerTools;
+PropsCard.propTypes = developerTools;
 
-export default Props;
+export default PropCarPropsCard;
