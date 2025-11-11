@@ -31,18 +31,35 @@
 // export default PropsCard;
 
 
-import PropTypeCard from '../../PropType/02_Planteamientos/PropType.types';
+// import PropTypeCard from '../../PropType/02_Planteamientos/PropType.types';
 
-function PropsCard({ id, title, descripcion, url }) {
+// function PropsCard({ id, title, descripcion, url }) {
+//     return (
+//         <div>
+//             <h4>{id}</h4>
+//             <h3>{title}</h3>
+//             <h2>{descripcion}</h2>
+//             <a href={url} target="_blank" rel="noopener noreferrer">{url}</a>
+//         </div>
+//     )
+// }
+// PropsCard.propType = PropTypeCard;
+
+// export default PropsCard;
+
+import PropTypeCard from "../../PropType/02_Planteamientos/PropType.types";
+
+function PropCard ({id, title, description, url, image}) {
     return (
         <div>
-            <h4>{id}</h4>
-            <h3>{title}</h3>
-            <h2>{descripcion}</h2>
-            <a href={url} target="_blank" rel="noopener noreferrer">{url}</a>
+            <img src={image} alt="imagen" />
+            <h1>{id}</h1>
+            <h2>{title}</h2>
+            <h3>{description}</h3>
+            <a href={url} target="_blank" rel="noopener noreferrer"> {url} </a>
         </div>
-    )
-}
-PropsCard.propType = PropTypeCard;
+    );
+} 
+PropCard.propType = PropTypeCard
 
-export default PropsCard;
+export default PropCard;
