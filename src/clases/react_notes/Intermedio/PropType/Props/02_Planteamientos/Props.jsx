@@ -30,6 +30,8 @@
 
 // export default PropsCard;
 
+//(3)
+
 
 // import PropTypeCard from '../../PropType/02_Planteamientos/PropType.types';
 
@@ -47,19 +49,42 @@
 
 // export default PropsCard;
 
+// (4)
+
+// import PropTypeCard from "../../PropType/02_Planteamientos/PropType.types";
+
+// function PropCard ({id, title, description, url, image}) {
+//     return (
+//         <div>
+//             <img src={image} alt="imagen" />
+//             <h1>{id}</h1>
+//             <h2>{title}</h2>
+//             <h3>{description}</h3>
+//             <a href={url} target="_blank" rel="noopener noreferrer"> {url} </a>
+//         </div>
+//     );
+// } 
+// PropCard.propType = PropTypeCard
+
+// export default PropCard;
+
+//(5)
+
 import PropTypeCard from "../../PropType/02_Planteamientos/PropType.types";
 
-function PropCard ({id, title, description, url, image}) {
-    return (
+const DEFAULT = "https://cdn.vectorstock.com/i/500p/33/47/no-photo-available-icon-vector-40343347.jpg"
+function PropsCard ({id, title, description, url, image = DEFAULT}) {
+    return(
         <div>
-            <img src={image} alt="imagen" />
-            <h1>{id}</h1>
-            <h2>{title}</h2>
-            <h3>{description}</h3>
+            <p>{id}</p>
+            <h1>{title}</h1>
+            <p>{description}</p>
             <a href={url} target="_blank" rel="noopener noreferrer"> {url} </a>
+            <img src={image} alt="iamgen" width={120} />
         </div>
     );
 } 
-PropCard.propType = PropTypeCard
+PropsCard.propType = PropTypeCard ;
 
-export default PropCard;
+export default PropsCard
+

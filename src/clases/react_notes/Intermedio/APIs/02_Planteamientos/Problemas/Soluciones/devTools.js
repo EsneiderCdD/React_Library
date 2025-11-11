@@ -51,14 +51,32 @@
 // }
 // export default fetchData
 
+//(4)
+
+// const API = "http://localhost:3000/devTools"
+// async function getData() {
+//     try {
+//         const res = await fetch(API);
+//         if (!res.ok) {
+//             throw new Error('Houston tenemos un problema');
+//         }
+//         const data = await res.json();
+//         return data;
+//     } catch (error) {
+//         throw error;
+//     }
+// }
+// export default getData
+
+// (5)
 
 
-const API = "http://localhost:3000/devTools"
-async function getData() {
+const API = "http://localhost:3000/devTools";
+async function getFechData() {
     try {
         const res = await fetch(API);
         if (!res.ok) {
-            throw new Error('Houston tenemos un problema');
+            throw new Error('!Houston');
         }
         const data = await res.json();
         return data;
@@ -66,5 +84,5 @@ async function getData() {
         throw error;
     }
 }
-export default getData
-    
+export default getFechData
+

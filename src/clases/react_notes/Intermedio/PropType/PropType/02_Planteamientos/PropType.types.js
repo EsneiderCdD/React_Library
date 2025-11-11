@@ -35,13 +35,26 @@
 
 // (4)
 
+// import PropTypes from "prop-types";
+
+// const PropTypeCard = {
+//     id: PropTypes.number,
+//     title: PropTypes.string.isRequired,
+//     description: PropTypes.string.isRequired,
+//     url: PropTypes.string,
+//     image: PropTypes.string.isRequired
+// }   
+// export default PropTypeCard;
+
+// (5)
+
 import PropTypes from "prop-types";
 
 const PropTypeCard = {
-    id: PropTypes.number,
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    url: PropTypes.string,
-    image: PropTypes.string.isRequired
-}   
-export default PropTypeCard;
+    id : PropTypes.number,
+    title : PropTypes.string.isRequired,
+    descriptiom : PropTypes.string,
+    url : PropTypes.string.isRequired,
+    imagen : PropTypes.string,
+}
+export default PropTypeCard

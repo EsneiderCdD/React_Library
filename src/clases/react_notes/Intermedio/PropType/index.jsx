@@ -145,49 +145,83 @@
 // }
 // export default Index;
 
-import { useState, useEffect } from 'react'
-import PropCard from '@intermedio/PropType/Props/02_Planteamientos/Props.jsx'
-import getData from '../APIs/02_Planteamientos/Problemas/Soluciones/devTools'
+//(4)
+
+// import { useState, useEffect } from 'react'
+// import PropCard from '@intermedio/PropType/Props/02_Planteamientos/Props.jsx'
+// import getData from '../APIs/02_Planteamientos/Problemas/Soluciones/devTools'
+
+// function Index() {
+//     const [devTools, setDevTools] = useState([]);
+//     const [error, setError] = useState(null);
+//     const [loading, setLoading] = useState(true);
+
+//     useEffect(() => {
+//         async function Card() {
+//             try {
+//                 setLoading(true);
+//                 const data = await getData();
+
+//                 setDevTools(data);
+//             } catch (err) {
+//                 setError(err.message);
+//             } finally {
+//                 setLoading(false);
+//             }
+//         }
+//         Card();
+//     }, []);
+
+//     if (loading) return <h1>Cargando ...</h1>
+//     if (error) return <h1>Error : {error} </h1>
+
+//     return (
+//         <div>
+//             <h1>Parece que ya lo tienes.</h1>
+//             {devTools.map((tool) => (
+//                 <PropCard
+//                     key={tool.id}
+//                     title={tool.title}
+//                     url={tool.url}
+//                     description={tool.description}
+//                     image={tool.image}
+//                 >
+//                 </PropCard>
+//             ))
+//             }
+//         </div>
+//     )
+// }
+// export default Index
+
+
+// (5)
+
+import PropTypeCard from '@intermedio/PropType/Props/02_Planteamientos/Props.jsx'
+import useDevTools from '../CustomHooks/useDevTools'
 
 function Index() {
-    const [devTools, setDevTools] = useState([]);
-    const [error, setError] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const {developerTools, loading, error} = useDevTools();
 
-    useEffect(() => {
-        async function Card() {
-            try {
-                setLoading(true);
-                const data = await getData();
-
-                setDevTools(data);
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        }
-        Card();
-    }, []);
-
-    if (loading) return <h1>Cargando ...</h1>
-    if (error) return <h1>Error : {error} </h1>
+    if (loading) return <h1>Cargando... </h1>
+    if (error) return <h1>Error : {error}</h1>
 
     return (
         <div>
-            <h1>Parece que ya lo tienes.</h1>
-            {devTools.map((tool) => (
-                <PropCard
+            <h1>+ Custom Hook. No PARAS de avanzar</h1>
+            {developerTools.map((tool) => (
+                <PropTypeCard
                     key={tool.id}
-                    title={tool.title}
+                    title={tool.name}
                     url={tool.url}
                     description={tool.description}
                     image={tool.image}
                 >
-                </PropCard>
-            ))
-            }
+                </PropTypeCard>
+            ))}
+
         </div>
     )
 }
 export default Index
+
